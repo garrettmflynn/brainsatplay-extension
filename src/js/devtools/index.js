@@ -211,13 +211,13 @@ const onShow = (panelWindow) => {
           states.error.style.display = ''
           states.table.innerHTML = ''
           sections = {}
-        } else if (message.name === 'echo') {
-          panel.postMessage({ 
-            ...message,
-            tabId: chrome.devtools.inspectedWindow.tabId, 
-            name: 'echo'
-          });
         } 
+        // else if (message.name === 'echo') {
+        //   panel.postMessage({ 
+        //     ...message,
+        //     tabId: chrome.devtools.inspectedWindow.tabId, 
+        //   });
+        // } 
         else if (message.focus) states.focus = message.focus
         else if (message.inspect) filterTable(states.focus)
         else {

@@ -43,6 +43,12 @@ const brainsatplayExtensionActivation = () => {
 
   const el = document.head||document.documentElement
   el.appendChild(script);
+
+  // window.postMessage({
+  //   source: id,
+  //   command: 'echo', // direct shortcut command
+  //   origin: window.location.href
+  // }, '*')
 }
 
 brainsatplayExtensionActivation()

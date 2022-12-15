@@ -101,6 +101,7 @@ chrome.runtime.onConnect.addListener(function (port) {
 
           // -------------------- Shortcut Commands --------------------
           if (message.command === 'openOptions') chrome.runtime.openOptionsPage()
+          if (message.command === 'echo') port.postMessage(message)
 
           // -------------------- Other Commands --------------------
           else {

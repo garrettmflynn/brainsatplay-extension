@@ -8,7 +8,7 @@ const send = (o) => {
 
 // --------------- Initialize Connection with DevTools Extension ---------------
 const echoId = Math.random()
-send({ name: 'echo', id: echoId }, '*');
+send({ name: 'echo', id: echoId, content: 'brainsatplay-devtools-echo' }, '*');
 
 
 const components = []
@@ -144,6 +144,7 @@ const init = () => {
 window.addEventListener('message', function(event) {
 
     const message = event.data;
+
     if (event.source !== window) return;  // Only accept messages from the same frame
     if (typeof message !== 'object' || message === null || !validIds.includes(message.source)) return; // Only accept messages that we know are ours
 
@@ -151,9 +152,12 @@ window.addEventListener('message', function(event) {
 
     if (esmonitor) {
         const name = message.name
+        const content = message.content
         if (name === 'init') {
             init()
-        } else if (name === 'echo') {
+        } 
+        
+        if (content === 'brainsatplay-devtools-echo') {
             if (message.id === echoId) {
                 console.log('[Brains@Play]: DevTools Extension Connected')
                 init() // Initialize if already connected
